@@ -16,7 +16,7 @@ pdfs = [load_pdf(f'data/interim/{f}') for f in invoice_fnames]
 # %%
 def process_pdf(pdf):
     page = pdf[0]
-    invoice_date = page.split('Description')[1].strip('\n').split('\n')[0]
+    invoice_date = page.split('$')[-2].strip('\n').split('\n')[-1]
     invoice_number = page.split('Invoice: ')[1].split('\n')[0]
     vendor = f'Park View Lawn Care - Invoice {invoice_number}'
     description = 'Lawn Care'
